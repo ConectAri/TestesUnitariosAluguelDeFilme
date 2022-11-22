@@ -41,3 +41,5 @@ public class LocacaoServiceTest {
         Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
     }
 }
+
+// Testando para master
