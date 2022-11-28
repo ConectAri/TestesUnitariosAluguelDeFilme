@@ -13,13 +13,13 @@ import java.util.Date;
 public class LocacaoServiceTest {
 
     @Test
-    public  void teste() {
+    public  void teste1() {
         //cenario
         // Cenário: Onde as variáveis serão inicializadas
 
         LocacaoService service = new LocacaoService();
         Usuario usuario = new Usuario("Usuario 1");
-        Filme filme = new Filme("Filme 1", 2, 4.0);
+        Filme filme = new Filme("Filme 1", 2, 5.0);
 
         //acao
         //Ação onde vamos invocar o método que vamos testar
@@ -40,6 +40,28 @@ public class LocacaoServiceTest {
         // A data de retorno deve ser a data do dia seguinte, quantos dias eu quero além da data do dia de hoje
         Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
     }
+
+    @Test
+    public void teste2(){
+
+        //cenário
+        LocacaoService service = new LocacaoService();
+        Usuario usuario = new Usuario("Usuario 1");
+        Filme filme = new Filme ("Filme1" , 2, 5.0);
+
+        //ação
+
+        Locacao locacao = service.alugarFilme(usuario, filme);
+
+        // verificação
+
+        Assert.assertEquals(4.0, locacao.getValor(), 0.01);
+        Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataLocacao(), new Date()));
+        Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
+
+
+    }
+
 }
 
 // Testando para master
