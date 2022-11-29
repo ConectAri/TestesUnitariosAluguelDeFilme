@@ -3,17 +3,18 @@ package br.ce.wcaquino.servicos;
 import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
-import br.ce.wcaquino.servicos.LocacaoService;
 import br.ce.wcaquino.utils.DataUtils;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Date;
 
+
+
 public class LocacaoServiceTest {
 
     @Test
-    public  void teste1() {
+    public static void teste1() throws Exception {
         //cenario
         // Cenário: Onde as variáveis serão inicializadas
 
@@ -42,7 +43,7 @@ public class LocacaoServiceTest {
     }
 
     @Test
-    public void teste2(){
+    public void testeLocacao(){
 
         //cenário
         LocacaoService service = new LocacaoService();
@@ -51,17 +52,24 @@ public class LocacaoServiceTest {
 
         //ação
 
-        Locacao locacao = service.alugarFilme(usuario, filme);
+        Locacao locacao = null;
+        try {
+            locacao = service.alugarFilme(usuario, filme);
+        } catch (Exception e) {
+             e.printStackTrace();
+        }
 
         // verificação
 
-        Assert.assertEquals(4.0, locacao.getValor(), 0.01);
+
         Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataLocacao(), new Date()));
         Assert.assertTrue(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)));
 
 
     }
 
-}
 
-// Testando para master
+    }
+
+
+
