@@ -21,7 +21,8 @@ public class AssertTest {
         Assert.assertEquals(Integer.valueOf(i), i2);
         Assert.assertEquals(i, i2.intValue());
 
-        Assert.assertEquals("bola", "bola");
+        // Aqui demonstra que o ESPERADO é bola e o resultado foi casa
+        Assert.assertEquals("bola", "casa");
         Assert.assertTrue("bola" .equalsIgnoreCase("Bola"));
         Assert.assertTrue("bola".startsWith("bo"));
 
